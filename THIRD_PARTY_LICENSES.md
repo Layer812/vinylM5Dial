@@ -1,6 +1,6 @@
 # Third-party licenses / 外部ライブラリ
 
-The VinylM5 Dial Edition application is licensed under GPL-3.0. Third-party dependencies retain their individual licenses. Dependencies are downloaded by PlatformIO, not vendored here.
+The VinylM5 Dial Edition application is licensed under GPL-3.0-or-later. Third-party dependencies retain their individual licenses. Dependencies are downloaded by PlatformIO, not vendored here.
 
 | Component | License | Project |
 | --- | --- | --- |
