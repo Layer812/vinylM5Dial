@@ -3,6 +3,7 @@
 M5Stack **M5Dial** と **Unit AudioPlayer** を使った、レコードプレイヤー風MP3プレイヤーです。円形ディスプレイにレコード盤が回転し、Unit AudioPlayerのmicroSDカードに保存した音楽を再生します。
 
 *A vinyl-style MP3 player for M5Stack M5Dial and Unit AudioPlayer, with a spinning record on the round display.*
+<img src = "dial.png><br>
 
 ## インストール / Installation
 
