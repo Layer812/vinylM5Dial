@@ -1,9 +1,9 @@
-# Artwork rights / 画像素材の権利
+# Artwork and image rights / 画像素材の権利
 
-The code is licensed under GPL-3.0-or-later. Image files and record-label artwork are not automatically covered by that software license. Redistribution must be authorized by each image's rights holder.
+VinylM5 Dial Edition's **source code** is licensed under **GPL-3.0-or-later**; see [LICENSE](LICENSE).
 
-The GitHub source publication helper copies the generated firmware label header from the user's locally supplied project, which may contain embedded graphic pixels. Run it only if the included image material may be redistributed. The stock source bundle available in the original development conversation includes all 18 label images.
+The 18 original record-label PNG files in `assets/` and their generated RGB565 representation in `src/label_assets.h` are included to reproduce the project display. The code license does **not automatically grant separate reuse rights** to the underlying images. Obtain permission from the relevant rights holders before extracting or redistributing artwork for another purpose.
 
-When creating your own label art, place properly licensed PNG files under `assets/`, update `assets/labels.csv`, and run `MAKE_LABELS_CMD.cmd`.
+This project uses the [M5Stack M5Dial](https://docs.m5stack.com/ja/core/Dial) and [M5Stack Unit AudioPlayer](https://docs.m5stack.com/ja/unit/Unit_AudioPlayer). Product names and trademarks belong to their respective owners.
 
-Product references: [M5Dial](https://docs.m5stack.com/ja/core/Dial), [Unit AudioPlayer](https://docs.m5stack.com/ja/unit/Unit_AudioPlayer).
+Related original project: [VinylM5 for M5Stack StopWatch](https://github.com/Layer812/VinylM5).
