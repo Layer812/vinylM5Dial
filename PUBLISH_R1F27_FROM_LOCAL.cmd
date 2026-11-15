@@ -30,7 +30,11 @@ if exist "%DEST%\.git" (
   if errorlevel 1 exit /b 1
 )
 if not exist "%DEST%\src" mkdir "%DEST%\src"
-copy /Y "%SRC%\src\main.cpp" "%DEST%\src\main.cpp" >nul
+(
+  echo // SPDX-License-Identifier: GPL-3.0-only
+  echo // Copyright ^(c^) 2026 Layer812
+  type "%SRC%\src\main.cpp"
+) > "%DEST%\src\main.cpp"
 if errorlevel 1 exit /b 1
 copy /Y "%SRC%\src\label_assets.h" "%DEST%\src\label_assets.h" >nul
 if errorlevel 1 exit /b 1
