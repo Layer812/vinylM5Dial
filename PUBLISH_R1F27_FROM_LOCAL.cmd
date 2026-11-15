@@ -18,8 +18,8 @@ if errorlevel 1 (
 )
 set "DEST=%TEMP%\vinylm5dial_public_source"
 if exist "%DEST%\.git" (
-  for /f "delims=" %%U in ('git -C "%DEST%" remote get-url origin') do set "REMOTE=%%U"
-  if /I not "%REMOTE%"=="https://github.com/Layer812/vinylM5Dial.git" (
+  git -C "%DEST%" remote get-url origin | findstr /I /X /C:"https://github.com/Layer812/vinylM5Dial.git" >nul
+  if errorlevel 1 (
     echo STOP: Existing folder has unexpected Git remote.
     exit /b 1
   )
