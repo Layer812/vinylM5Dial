@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-only
+// SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (c) 2026 Layer812
 // VinylM5 Dial Edition R1F27 (guarded Core0 LCD, priority Core1 input) - M5Dial Port.B + Unit AudioPlayer U197
 // 2026-11-15 | No external assets | N9301 command interval >= 520 ms
