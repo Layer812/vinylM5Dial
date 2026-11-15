@@ -1,59 +1,73 @@
 # VinylM5 Dial Edition
 
-**VinylM5 Dial Edition** is a vinyl-record-style MP3 player for the **M5Stack M5Dial** and **M5Stack Unit AudioPlayer (N9301)**. The circular display shows an animated record; the Unit AudioPlayer plays music from its own microSD card over UART.
+M5Stack **M5Dial** と **Unit AudioPlayer** を使った、レコードプレイヤー風MP3プレイヤーです。円形ディスプレイにレコード盤が回転し、Unit AudioPlayerのmicroSDカードに保存した音楽を再生します。
 
-日本語 / English
+*A vinyl-style MP3 player for M5Stack M5Dial and Unit AudioPlayer, with a spinning record on the round display.*
 
-![Status](https://img.shields.io/badge/status-development%20build-lightgrey)
+## インストール / Installation
 
-## Hardware / 対応機器
+**M5Burner シェアコード / Share code:**
 
-- [M5Stack M5Dial — official product documentation](https://docs.m5stack.com/ja/core/Dial)
-- [M5Stack Unit AudioPlayer — official product documentation](https://docs.m5stack.com/ja/unit/Unit_AudioPlayer)
-- Connect the AudioPlayer to **M5Dial PORT.B**: GPIO1 = UART RX, GPIO2 = UART TX, 9600 baud.
-- Insert a FAT32 microSD card with MP3 files into the **Unit AudioPlayer**, not the Dial.
+```text
+7mmNQf8WeWAV9BgF
+```
 
-## Operation / 操作方法
+[M5Burner](https://docs.m5stack.com/en/quick_start/m5burner/m5burner) からシェアコードを使用してインストールできます。
 
-| M5Dial control / 操作 | Function / 動作 |
+Use the share code above in M5Burner to install the application.
+
+## 対応製品 / Hardware
+
+- [M5Stack M5Dial（製品情報 / Product）](https://docs.m5stack.com/ja/core/Dial)
+- [M5Stack Unit AudioPlayer（製品情報 / Product）](https://docs.m5stack.com/ja/unit/Unit_AudioPlayer)
+
+M5Dialの**PORT.B**とUnit AudioPlayerをUARTで接続します（GPIO1 = RX、GPIO2 = TX、9600bps）。MP3ファイルは**Unit AudioPlayer側**のFAT32形式microSDカードに保存してください。
+
+Connect the Unit AudioPlayer to M5Dial **PORT.B** over UART (GPIO1 RX, GPIO2 TX, 9600bps). Put MP3 files on the FAT32 microSD card in the **Unit AudioPlayer**.
+
+## 操作方法 / Controls
+
+| 操作 / Control | 機能 / Function |
 | --- | --- |
-| Rotate dial clockwise / 右回転 | Next track / 次の曲 |
-| Rotate dial counterclockwise / 左回転 | Previous track / 前の曲 |
-| Press encoder / ダイヤル押し込み | Play / Stop |
-| Tap center / 中央タップ | Pause / Resume |
-| Tap upper / 上タップ | Volume + |
-| Tap lower / 下タップ | Volume − |
-| Tap right / 右タップ | Next folder (N9301 command) |
-| Tap left / 左タップ | Previous folder (N9301 command) |
-| Swipe left or right / 左右スワイプ | Next or previous track |
+| ダイヤル右回転 / Clockwise | 次の曲 / Next track |
+| ダイヤル左回転 / Counterclockwise | 前の曲 / Previous track |
+| ダイヤルの押し込み / Press dial | 再生・停止 / Play–Stop |
+| 中央タップ / Tap center | 一時停止・再開 / Pause–Resume |
+| 画面上タップ / Tap upper area | 音量＋ / Volume up |
+| 画面下タップ / Tap lower area | 音量－ / Volume down |
+| 画面右タップ / Tap right | 次のフォルダ / Next folder |
+| 画面左タップ / Tap left | 前のフォルダ / Previous folder |
+| 左右スワイプ / Swipe horizontally | 曲送り・曲戻し / Next or previous track |
 
-The UI displays a rotating label and track/total count without a playback-time readout. It uses `LOADING` during startup and initially sets volume to **10/30** unless a saved preference exists.
+曲数表示、レコードラベルの回転、全曲ループ、前回曲・音量の記憶に対応しています。音量の初期値は**10/30**です（保存済み設定を優先します）。
 
-**Development status (R1F27):** Device playback and screen operation have been demonstrated in earlier revisions. R1F27 was successfully built and written APP-only to COM21 on Windows, but on-device review reports that the initial screen can remain at `LOADING` with no audio and that the dial takes too many turns to change one track. These problems are **not resolved**. Folder A/B/C operation and continuous playback also remain under review. This is **not a stable release**.
+The display shows the track number and total count on a rotating record label. The player supports all-track repeat and saved track/volume preferences. Default volume is **10/30** unless a saved setting exists.
 
-## Build / ビルド
+## ソースからビルド / Build from source
 
-Windows CMD + PlatformIO / Arduino (ESP32-S3):
+PlatformIO と Arduino-ESP32 を使用します。
 
 ```bat
 pio run -e m5dial
 ```
 
-Project settings target `m5stack-stamps3`, `espressif32@55.3.311`, and `m5stack/M5Dial@1.0.3`.
+Windowsのビルド・APP-ONLY書き込みには、同梱の `BUILD_AND_FLASH_CMD.cmd` を使用できます。COMポートは環境に合わせて指定してください。
 
-Please do not use generic PlatformIO upload as a substitute for the supplied APP-only procedure; it may rewrite bootloader or partition metadata. The development flash script checks the actual partition table and boot selector and refuses an unknown layout. Never erase the full flash just to update this app.
+For Windows, `BUILD_AND_FLASH_CMD.cmd` provides build and APP-only flashing. Specify the COM port for your device.
 
-## Relationship to VinylM5 / オリジナル作品
+## VinylM5 シリーズ / Related project
 
-This project is the **M5Dial + Unit AudioPlayer** edition of [VinylM5 for the M5Stack StopWatch](https://github.com/Layer812/VinylM5). It is a separate device target, with hardware decoding via N9301 rather than the StopWatch application's audio pipeline.
+VinylM5 Dial Editionは、M5Stack StopWatch用のレコードプレイヤーアプリ **VinylM5** のM5Dial版です。
 
-- [VinylM5 repository / オリジナルのGitHub](https://github.com/Layer812/VinylM5)
-- [Original VinylM5 WebBurner](https://burner.m5stack.com/LRW3MJ) (for **StopWatch**, **not** M5Dial)
+VinylM5 Dial Edition is the M5Dial + Unit AudioPlayer companion to the original VinylM5 for M5Stack StopWatch.
 
-## License / ライセンス
+- [VinylM5 — GitHub](https://github.com/Layer812/VinylM5)
+- [VinylM5 — WebBurner（StopWatch用 / StopWatch version）](https://burner.m5stack.com/LRW3MJ)
 
-Source code is distributed under the **GNU General Public License v3.0 or later** (GPL-3.0-or-later), consistent with the original [VinylM5 license](https://github.com/Layer812/VinylM5/blob/main/LICENSE).
+## ライセンス / License
 
-M5Stack / Espressif libraries are separately licensed by their respective authors; see [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). Album/label artwork, when supplied, is not automatically licensed under the source-code license. Do not assume artwork may be redistributed separately.
+ソースコードは [GNU General Public License v3.0 or later](LICENSE)（GPL-3.0-or-later）で公開しています。外部ライブラリのライセンスは [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)、レコードラベル画像については [COPYRIGHT_ARTWORK.md](COPYRIGHT_ARTWORK.md) をご覧ください。
 
-Project is not affiliated with M5Stack. Product names and trademarks remain with their owners.
+Source code is available under **GPL-3.0-or-later**. Third-party dependencies and artwork remain subject to their own license and rights notices.
+
+M5Stack等の製品名・商標は各権利者に帰属します。
