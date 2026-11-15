@@ -52,7 +52,7 @@ This project is the **M5Dial + Unit AudioPlayer** edition of [VinylM5 for the M5
 
 ## License / ライセンス
 
-Source code is distributed under the **GNU General Public License v3.0** (GPL-3.0), consistent with the original [VinylM5 license](https://github.com/Layer812/VinylM5/blob/main/LICENSE).
+Source code is distributed under the **GNU General Public License v3.0 or later** (GPL-3.0-or-later), consistent with the original [VinylM5 license](https://github.com/Layer812/VinylM5/blob/main/LICENSE).
 
 M5Stack / Espressif libraries are separately licensed by their respective authors; see [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). Album/label artwork, when supplied, is not automatically licensed under the source-code license. Do not assume artwork may be redistributed separately.
 
